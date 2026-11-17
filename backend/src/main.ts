@@ -2,25 +2,26 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import cors from 'cors';
 import { Logger, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { EnvironmentVariables } from './config/env.validation';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const logger = new Logger('Bootstrap');
+  const configService = app.get(ConfigService<EnvironmentVariables, true>);
 
-  // Security middleware - makes HTTP headers more secure
+  // Security HTTP Headers
   app.use(helmet());
 
-  // CORS - controls which frontend can access the API
-  app.use(
-    cors({
-      origin: [process.env.FRONTEND_URL || 'http://localhost:3000'],
-      credentials: true,
-    }),
-  );
+  // Native NestJS CORS using validated FRONTEND_URL
+  const frontendUrl = configService.get<string>('FRONTEND_URL', { infer: true });
+  app.enableCors({
+    origin: [frontendUrl],
+    credentials: true,
+  });
 
-  // Incoming request logging
+  // Incoming HTTP request logging
   app.use(morgan('combined'));
 
   // Global validation pipe - validates incoming request bodies
@@ -32,10 +33,10 @@ async function bootstrap() {
     }),
   );
 
-  // Example: /users -> /api/users
+  // Global Route Prefix
   app.setGlobalPrefix('api');
 
-  const port = process.env.PORT ?? 8000;
+  const port = configService.get<number>('PORT', { infer: true });
 
   await app.listen(port);
 
