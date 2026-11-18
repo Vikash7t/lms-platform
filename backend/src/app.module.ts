@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { validate } from './config/env.validation';
+import { validate, EnvironmentVariables } from './config/env.validation';
 
 @Module({
   imports: [
@@ -11,6 +12,18 @@ import { validate } from './config/env.validation';
       cache: true,
       validate,
       envFilePath: ['.env.local', '.env'],
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService<EnvironmentVariables, true>) => ({
+        type: 'postgres',
+        url: configService.get<string>('DATABASE_URL', { infer: true }),
+        autoLoadEntities: true,
+        synchronize: false,
+        logging:
+          configService.get<string>('NODE_ENV', { infer: true }) ===
+          'development',
+      }),
     }),
   ],
   controllers: [AppController],
