@@ -9,7 +9,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
-A production-oriented, full-stack online course marketplace inspired by **Udemy**. Built as an ad-hoc monorepo featuring a **NestJS 11** modular backend API and a **Next.js 16 (App Router)** client with modern **Shadcn UI** primitives and **Tailwind CSS v4**.
+A production-oriented, full-stack online course and learning management platform. Built as an ad-hoc monorepo featuring a **NestJS 11** modular backend API and a **Next.js 16 (App Router)** client with modern **Shadcn UI** primitives and **Tailwind CSS v4**.
 
 ---
 
@@ -239,11 +239,10 @@ npx tsc --noEmit --incremental false
 ## Documentation Index
 
 - 📘 **[Canonical Master Development Plan](docs/LMS_PROJECT_MASTER_PLAN.md):** Complete 19-section architectural blueprint, entity catalogs, sequence diagrams, and security invariants.
-- 📋 **[Project Discovery & Technical Audit Report](LMS_PROJECT_DISCOVERY_REPORT.md):** Baseline analysis of the legacy tutorial repository and comparative audit.
+- 📋 **[Project Discovery & Technical Audit Report](LMS_PROJECT_DISCOVERY_REPORT.md):** Repository discovery and technical architecture audit report.
 
 ---
 
-## Author & Acknowledgements
+## Author
 
 - **Developer:** Vikash Singh ([@Vikash7t](https://github.com/Vikash7t))
-- **Original Inspiration:** Desi Stack Full-Stack LMS Masterclass series
