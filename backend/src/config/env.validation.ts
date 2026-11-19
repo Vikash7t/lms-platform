@@ -97,6 +97,22 @@ export class EnvironmentVariables {
   @IsOptional()
   @IsString()
   RAZORPAY_WEBHOOK_SECRET?: string;
+
+  // Google OAuth 2.0 (Optional in dev; required if Google auth enabled)
+  @Transform(({ value }) => (value === '' ? undefined : value))
+  @IsOptional()
+  @IsString()
+  GOOGLE_CLIENT_ID?: string;
+
+  @Transform(({ value }) => (value === '' ? undefined : value))
+  @IsOptional()
+  @IsString()
+  GOOGLE_CLIENT_SECRET?: string;
+
+  @Transform(({ value }) => (value === '' ? undefined : value))
+  @IsOptional()
+  @IsString()
+  GOOGLE_CALLBACK_URL?: string;
 }
 
 export function validate(config: Record<string, unknown>) {

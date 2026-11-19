@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariables } from './config/env.validation';
@@ -13,6 +14,9 @@ async function bootstrap() {
 
   // Security HTTP Headers
   app.use(helmet());
+
+  // Cookie Parser Middleware
+  app.use(cookieParser());
 
   // Native NestJS CORS using validated FRONTEND_URL
   const frontendUrl = configService.get<string>('FRONTEND_URL', { infer: true });
