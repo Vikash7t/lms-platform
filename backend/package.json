@@ -22,7 +22,8 @@
     "migration:generate": "typeorm-ts-node-commonjs migration:generate -d ./src/database/data-source.ts",
     "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/database/data-source.ts",
     "migration:revert": "typeorm-ts-node-commonjs migration:revert -d ./src/database/data-source.ts",
-    "migration:show": "typeorm-ts-node-commonjs migration:show -d ./src/database/data-source.ts"
+    "migration:show": "typeorm-ts-node-commonjs migration:show -d ./src/database/data-source.ts",
+    "seed:admin": "ts-node -r tsconfig-paths/register src/database/seeds/admin.seed.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -35,6 +36,7 @@
     "bcryptjs": "^3.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
+    "cookie-parser": "^1.4.7",
     "helmet": "^8.3.0",
     "morgan": "^1.11.0",
     "passport": "^0.7.0",
@@ -51,6 +53,7 @@
     "@nestjs/cli": "^11.0.0",
     "@nestjs/schematics": "^11.0.0",
     "@nestjs/testing": "^11.0.1",
+    "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.0",
@@ -85,6 +88,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@nestjs/config)"
+    ]
   }
 }

@@ -200,9 +200,9 @@ The Next.js storefront will start on: `http://localhost:3000`
 | Phase | Description | Status |
 |:---:|---|:---:|
 | **01** | Baseline Checkpoint, Dependency Hygiene & Hardened Environment Validation | ✅ **Completed** |
-| **02** | Database Infrastructure (PostgreSQL 16, TypeORM Integration & Migrations) | 🔄 **In Progress** |
-| **03** | Identity, Authentication (JWT + Google OAuth) & Multi-Role RBAC | ⏳ Planned |
-| **04** | Frontend State Architecture (React Query + Zustand) & Auth UI Dialogs | ⏳ Planned |
+| **02** | Database Infrastructure (PostgreSQL 16, TypeORM Integration & Migrations) | ✅ **Completed** |
+| **03** | Identity, Authentication (JWT + Google OAuth) & Multi-Role RBAC | ✅ **Completed** |
+| **04** | Frontend State Architecture (React Query + Zustand) & Auth UI Dialogs | 🔄 **In Progress** |
 | **05** | Category Taxonomy & Administrative Instructor Onboarding | ⏳ Planned |
 | **06** | Course Domain & Hierarchical Curriculum Management (Sections/Lectures) | ⏳ Planned |
 | **07** | Media Services (Cloudinary Direct Signed Uploads & Signed Streaming) | ⏳ Planned |
