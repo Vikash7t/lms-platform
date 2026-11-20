@@ -23,7 +23,8 @@
     "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/database/data-source.ts",
     "migration:revert": "typeorm-ts-node-commonjs migration:revert -d ./src/database/data-source.ts",
     "migration:show": "typeorm-ts-node-commonjs migration:show -d ./src/database/data-source.ts",
-    "seed:admin": "ts-node -r tsconfig-paths/register src/database/seeds/admin.seed.ts"
+    "seed:admin": "ts-node -r tsconfig-paths/register src/database/seeds/admin.seed.ts",
+    "seed:categories": "ts-node -r tsconfig-paths/register src/database/seeds/categories.seed.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
