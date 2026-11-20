@@ -4,7 +4,9 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
 } from 'typeorm';
+import { InstructorProfile } from '../../instructor/entities/instructor-profile.entity';
 
 export enum UserRole {
   LEARNER = 'LEARNER',
@@ -44,6 +46,11 @@ export class User {
 
   @Column({ default: false })
   isEmailVerified: boolean;
+
+  @OneToOne(() => InstructorProfile, (profile) => profile.user, {
+    nullable: true,
+  })
+  instructorProfile?: InstructorProfile;
 
   @CreateDateColumn({ type: 'timestamp with time zone' })
   createdAt: Date;

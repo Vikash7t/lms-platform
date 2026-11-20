@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { validate, EnvironmentVariables } from './config/env.validation';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+import { InstructorModule } from './modules/instructor/instructor.module';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { AuthModule } from './modules/auth/auth.module';
     }),
     UsersModule,
     AuthModule,
+    CategoriesModule,
+    InstructorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

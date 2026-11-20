@@ -10,6 +10,8 @@ import {
   LogOut,
   ShieldAlert,
   Briefcase,
+  Users,
+  FolderTree,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -58,13 +60,21 @@ export function Navbar() {
               </span>
             </Link>
 
-            {/* Quick Explore Link */}
+            {/* Quick Navigation Links */}
             <Link
               href="/courses"
               className="hidden md:flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               <BookOpen className="h-4 w-4" />
               <span>Explore Courses</span>
+            </Link>
+
+            <Link
+              href="/instructor/apply"
+              className="hidden md:flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <GraduationCap className="h-4 w-4" />
+              <span>Teach on Platform</span>
             </Link>
           </div>
 
@@ -140,22 +150,37 @@ export function Navbar() {
                       </Link>
                     </DropdownMenuItem>
 
-                    {isInstructor && (
+                    {isInstructor ? (
                       <DropdownMenuItem asChild>
                         <Link href="/instructor/courses" className="cursor-pointer">
                           <Briefcase className="mr-2 h-4 w-4" />
-                          <span>Instructor Portal</span>
+                          <span>Instructor Studio</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuItem asChild>
+                        <Link href="/instructor/apply" className="cursor-pointer">
+                          <GraduationCap className="mr-2 h-4 w-4" />
+                          <span>Teach on Platform</span>
                         </Link>
                       </DropdownMenuItem>
                     )}
 
                     {isAdmin && (
-                      <DropdownMenuItem asChild>
-                        <Link href="/admin/categories" className="cursor-pointer text-destructive focus:text-destructive">
-                          <ShieldAlert className="mr-2 h-4 w-4" />
-                          <span>Admin Console</span>
-                        </Link>
-                      </DropdownMenuItem>
+                      <>
+                        <DropdownMenuItem asChild>
+                          <Link href="/admin/categories" className="cursor-pointer">
+                            <FolderTree className="mr-2 h-4 w-4" />
+                            <span>Manage Categories</span>
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href="/admin/instructors" className="cursor-pointer">
+                            <Users className="mr-2 h-4 w-4" />
+                            <span>Review Instructors</span>
+                          </Link>
+                        </DropdownMenuItem>
+                      </>
                     )}
 
                     <DropdownMenuItem asChild>
